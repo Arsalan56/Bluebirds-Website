@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/logo-mark.png">
+<title>Bluebirds Counseling</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,460;0,9..144,560;1,9..144,440&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+  :root {
+    --ink: #0d3436;
+    --ink-soft: #3d6567;
+    --ink-faint: #6f9496;
+    --bg: #f7fcfb;
+    --surface: #ffffff;
+    --surface-alt: #eaf8f5;
+    --accent: #1fa7ae;
+    --accent-ink: #ffffff;
+    --accent-sky: #63c6e8;
+    --accent-mint: #4bcf9e;
+    --accent-deep: #0e4d4a;
+    --line: #d9eeec;
+    --tag-bg: #e1f5f2;
+    --tag-ink: #136d6f;
+    --shadow: 0 20px 50px -26px rgba(14, 77, 74, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-weight: 560;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  a { color: inherit; }
+  img { display: block; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: "Work Sans", sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1.5px;
+    background: var(--accent-sky);
+    display: inline-block;
+  }
+
+  /* ---------- Wave divider ---------- */
+  .wave-divider {
+    display: block;
+    width: 100%;
+    height: auto;
+    line-height: 0;
+  }
+  .wave-divider svg { width: 100%; height: 72px; display: block; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+    gap: 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .brand img { width: 38px; height: 38px; flex: none; object-fit: contain; }
+  .brand-name {
+    font-family: "Fraunces", serif;
+    font-weight: 560;
+    font-size: 19px;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .brand-name small {
+    display: block;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .nav-phone svg { width: 15px; height: 15px; color: var(--accent); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn:focus-visible { outline: 2px solid var(--accent-sky); outline-offset: 2px; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-sky));
+    color: var(--accent-ink);
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover { transform: translateY(-1.5px); }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 0 20px; }
+    nav.wrap { gap: 14px; }
+    .nav-phone { display: none; }
+    .btn-primary { padding: 11px 16px; font-size: 13.5px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0 56px;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: -25% -10% auto -10%;
+    height: 620px;
+    background:
+      radial-gradient(55% 55% at 15% 15%, color-mix(in srgb, var(--accent-sky) 26%, transparent), transparent 70%),
+      radial-gradient(45% 45% at 88% 8%, color-mix(in srgb, var(--accent-mint) 20%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-wave {
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    width: 100%;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 4.6vw, 56px);
+    line-height: 1.07;
+    margin: 18px 0 22px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero p.lede {
+    font-size: 17.5px;
+    color: var(--ink-soft);
+    max-width: 50ch;
+    margin: 0 0 32px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta div { display: flex; flex-direction: column; gap: 3px; }
+  .hero-meta .num {
+    font-family: "Fraunces", serif;
+    font-size: 26px;
+    font-weight: 560;
+    color: var(--accent-deep);
+  }
+  .hero-meta .lbl {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+
+  .hero-art {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 420px;
+    margin: 0 auto;
+    perspective: 900px;
+  }
+  .hero-art-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+    will-change: transform;
+  }
+  .hero-art-inner:hover,
+  .hero-art-inner.is-active {
+    transition: transform 0.08s linear;
+  }
+  .hero-art .halo {
+    position: absolute;
+    inset: 6%;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--surface-alt), var(--surface));
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transform: translateZ(0px);
+    transition: box-shadow 0.4s ease;
+  }
+  .hero-art-inner:hover .halo,
+  .hero-art-inner.is-active .halo {
+    box-shadow: 0 34px 60px -22px color-mix(in srgb, var(--accent-deep) 45%, transparent);
+  }
+  .hero-art .sheen {
+    position: absolute;
+    inset: 6%;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 30%), rgba(255,255,255,0.75), transparent 58%);
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: translateZ(66px);
+  }
+  .hero-art-inner:hover .sheen,
+  .hero-art-inner.is-active .sheen {
+    opacity: 1;
+  }
+  .hero-art .ring {
+    position: absolute;
+    inset: 6%;
+    border-radius: 50%;
+    pointer-events: none;
+    border: 1px solid color-mix(in srgb, var(--accent-sky) 55%, transparent);
+    opacity: 0;
+    transform: translateZ(30px) scale(1.06);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .hero-art-inner:hover .ring,
+  .hero-art-inner.is-active .ring {
+    opacity: 1;
+    transform: translateZ(30px) scale(1.12);
+  }
+  .hero-art img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 69.6%;
+    height: auto;
+    transform: translate(-50%, -50%) translateZ(54px);
+    filter: drop-shadow(0 10px 18px color-mix(in srgb, var(--accent-deep) 22%, transparent));
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+  .hero-art-inner:hover img,
+  .hero-art-inner.is-active img {
+    filter: drop-shadow(0 22px 28px color-mix(in srgb, var(--accent-deep) 32%, transparent));
+    transform: translate(-50%, -50%) translateZ(64px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-art-inner, .hero-art-inner .halo, .hero-art-inner .sheen, .hero-art-inner .ring {
+      transition: none !important;
+      transform: none !important;
+    }
+    .hero-art-inner img {
+      transition: none !important;
+      transform: translate(-50%, -50%) !important;
+    }
+  }
+  /* Touch/coarse-pointer devices: the tilt is a hover affordance with no
+     touch equivalent, and transform-style:preserve-3d inside an
+     overflow:hidden ancestor is a known mobile WebKit bug that makes the
+     element disappear. Flatten it instead of letting that fire. */
+  @media (hover: none), (pointer: coarse) {
+    .hero-art { perspective: none; }
+    .hero-art-inner, .hero-art-inner .halo, .hero-art-inner .sheen, .hero-art-inner .ring {
+      transition: none !important;
+      transform: none !important;
+    }
+    .hero-art-inner img {
+      transition: none !important;
+      transform: translate(-50%, -50%) !important;
+    }
+  }
+
+  section { padding: 84px 0; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+  .section-head h2 {
+    font-size: clamp(27px, 3vw, 36px);
+    margin-top: 12px;
+    max-width: 20ch;
+  }
+  .section-head p {
+    max-width: 38ch;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    margin: 0;
+  }
+
+  /* ---------- Services ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 30px 30px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .service-card .icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: var(--surface-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  .service-card .icon svg { width: 24px; height: 24px; }
+  .service-card h3 { font-size: 20px; }
+  .service-card p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .tag {
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-ink);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-art { order: -1; max-width: 280px; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .section-head h2, .section-head p { max-width: none; }
+  }
+
+  /* ---------- Approach (light wave section) ---------- */
+  .band {
+    position: relative;
+    background: var(--surface-alt);
+    overflow: hidden;
+  }
+  .band-wave-top, .band-wave-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    width: 100%;
+    line-height: 0;
+  }
+  .band-wave-top { top: -1px; transform: scaleY(-1); }
+  .band-wave-bottom { bottom: -1px; }
+  .band .wrap { position: relative; padding-top: 28px; padding-bottom: 8px; }
+  .band-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .band h2 {
+    font-size: clamp(26px, 3vw, 34px);
+    max-width: 16ch;
+  }
+  .band p.lede {
+    color: var(--ink-soft);
+    font-size: 16.5px;
+    max-width: 48ch;
+    margin: 18px 0 0;
+  }
+  .proof-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .proof-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .proof-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .proof-item svg { width: 22px; height: 22px; color: var(--accent); flex: none; margin-top: 2px; }
+  .proof-item h4 { margin: 0 0 4px; font-family: "Fraunces", serif; font-weight: 500; font-size: 16.5px; color: var(--ink); }
+  .proof-item p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    .band-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 132px;
+    grid-auto-flow: dense;
+    gap: 14px;
+  }
+  .gallery-grid figure {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .gallery-grid figure:hover img { transform: scale(1.04); }
+  .gallery-grid .big { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .wide { grid-column: span 2; }
+  .gallery-grid .zoom-face { transform: scale(1.28); transform-origin: 50% 32%; }
+  .gallery-grid figure:hover .zoom-face { transform: scale(1.34); transform-origin: 50% 32%; }
+
+  @media (max-width: 760px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+  }
+
+  /* ---------- Team ---------- */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .team-card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 22px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .team-card:hover, .team-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-sky);
+  }
+  .team-photo {
+    aspect-ratio: 4 / 4.4;
+    background: var(--surface-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; transition: transform 0.4s ease; }
+  .team-card:hover .team-photo img { transform: scale(1.05); }
+  .team-photo svg { width: 46%; height: 46%; color: var(--accent); opacity: 0.55; }
+  .team-card h3 { font-size: 16.5px; margin: 18px 18px 4px; }
+  .team-card .role {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 0 18px;
+  }
+  .team-card .view-bio {
+    display: block;
+    margin: 12px 18px 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-faint);
+  }
+  .team-card:hover .view-bio, .team-card:focus-visible .view-bio { color: var(--accent); }
+
+  @media (max-width: 860px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- Contact / Booking ---------- */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .contact-copy {
+    padding: 52px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+  .contact-copy h2 { font-size: clamp(25px, 2.8vw, 32px); }
+  .contact-copy p { color: var(--ink-soft); margin: 0; max-width: 42ch; font-size: 15.5px; }
+  .contact-list { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+  .contact-list a, .contact-list .item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .contact-list svg { width: 19px; height: 19px; color: var(--accent); flex: none; }
+  .contact-panel {
+    position: relative;
+    --mx: 50%;
+    --my: 50%;
+    background:
+      radial-gradient(640px circle at var(--mx) var(--my), rgba(255,255,255,0.24), transparent 65%),
+      linear-gradient(165deg, var(--accent-sky), var(--accent));
+    color: #ffffff;
+    padding: 52px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    overflow: hidden;
+  }
+  .contact-panel .eyebrow { color: #ffffff; }
+  .contact-panel .eyebrow::before { background: #ffffff; }
+  .contact-panel h3 { color: #ffffff; font-size: 22px; margin-top: 10px; }
+  .contact-panel p { position: relative; margin: 0; color: rgba(255,255,255,0.88); font-size: 14.5px; max-width: 36ch; }
+  .contact-panel .btn-primary { position: relative; margin-top: 10px; align-self: flex-start; background: #ffffff; color: var(--accent-deep); box-shadow: none; }
+
+  @media (max-width: 860px) {
+    .contact-wrap { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    position: relative;
+    background: var(--surface-alt);
+    overflow: hidden;
+  }
+  footer .footer-inner {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 36px;
+  }
+  footer .wrap.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .brand { gap: 10px; }
+  footer .brand img { width: 30px; height: 30px; }
+  footer .fine {
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+  footer .brand-name { font-size: 15.5px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <img src="images/logo-mark.png" alt="Bluebirds bird mark">
+      <span class="brand-name">Bluebirds Counseling<small>and Recovery Solutions</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+17032320033">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (703) 232-0033
+      </a>
+      <a class="btn btn-primary" href="https://www.therapyportal.com/p/bluebirds1/" target="_blank" rel="noopener noreferrer">Book a Session</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Based in Woodbridge, Virginia</div>
+        <h1>Steady, compassionate care<br>for the journey <em>forward</em>.</h1>
+        <p class="lede">Bluebirds Counseling &amp; Recovery Solutions offers individual, couples, family, and group therapy grounded in trust &mdash; helping you move through hard seasons and build a life that feels like yours again.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://www.therapyportal.com/p/bluebirds1/" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            Book Your First Session
+          </a>
+          <a class="btn btn-ghost" href="#services">Explore Services</a>
+        </div>
+        <div class="hero-meta">
+          <div><span class="num">4</span><span class="lbl">Therapy modalities</span></div>
+          <div><span class="num">1:1</span><span class="lbl">Personalized treatment plans</span></div>
+          <div><span class="num">VA &amp; MD</span><span class="lbl">Licensed clinical team</span></div>
+        </div>
+      </div>
+      <div class="hero-art" id="heroArt">
+        <div class="hero-art-inner" id="heroArtInner">
+          <div class="halo"></div>
+          <div class="ring"></div>
+          <img src="images/logo-mark.png" alt="Bluebirds Counseling &amp; Recovery Solutions bird mark">
+          <div class="sheen"></div>
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="waveSky" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="var(--accent-sky)"/>
+          <stop offset="100%" stop-color="var(--accent)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,90 C 220,30 420,120 700,70 C 980,20 1220,100 1440,55 L1440,140 L0,140 Z" fill="url(#waveSky)" opacity="0.14"/>
+      <path d="M0,110 C 260,60 480,135 760,95 C 1040,55 1260,120 1440,85 L1440,140 L0,140 Z" fill="var(--accent-mint)" opacity="0.12"/>
+    </svg>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">What We Offer</div>
+          <h2>Therapy shaped around where you are today.</h2>
+        </div>
+        <p>Whether you&rsquo;re healing on your own, repairing a relationship, or supporting your whole family, our clinicians tailor each path to fit.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+          <h3>Individual Therapy</h3>
+          <p>One-on-one sessions focused on your own history, goals, and pace of healing.</p>
+          <div class="tag-list">
+            <span class="tag">Trauma &amp; PTSD</span>
+            <span class="tag">Anger Issues</span>
+            <span class="tag">Mood Disorders</span>
+            <span class="tag">Grief &amp; Loss</span>
+            <span class="tag">Military &amp; Deployment Transitions</span>
+            <span class="tag">Self-Esteem Building</span>
+            <span class="tag">Refugee &amp; Resettlement</span>
+            <span class="tag">Life Transitions</span>
+            <span class="tag">Substance Use</span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Couples Therapy</h3>
+          <p>A structured space to rebuild communication, trust, and connection together.</p>
+          <div class="tag-list">
+            <span class="tag">Effective Communication</span>
+            <span class="tag">Conflict Resolution</span>
+            <span class="tag">Premarital Counseling</span>
+            <span class="tag">Infidelity &amp; Trust Repair</span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="7" r="2.6"/><path d="M2.5 21c0-3.6 2.5-6.5 5.5-6.5s5.5 2.9 5.5 6.5M14.5 21c0-2.8 1.8-5.2 4-6"/></svg></div>
+          <h3>Family Therapy</h3>
+          <p>Supporting every member as your family adjusts, grows, and heals together.</p>
+          <div class="tag-list">
+            <span class="tag">Navigating Divorce</span>
+            <span class="tag">Parent-Child Relationship</span>
+            <span class="tag">Blended Family Adjustment</span>
+            <span class="tag">Sibling Relationships</span>
+            <span class="tag">Co-Parenting</span>
+            <span class="tag">Conflict Resolution</span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="8" r="2.6"/><circle cx="17" cy="8" r="2.6"/><circle cx="12" cy="14" r="2.8"/><path d="M3 20c.5-2.8 2-4.5 4-4.9M21 20c-.5-2.8-2-4.5-4-4.9M8.5 20c.6-2.6 1.8-4 3.5-4s2.9 1.4 3.5 4"/></svg></div>
+          <h3>Group Therapy</h3>
+          <p>Shared healing in a guided, confidential setting alongside others on similar paths.</p>
+          <div class="tag-list">
+            <span class="tag">Open Process Groups</span>
+            <span class="tag">Substance Recovery Groups</span>
+            <span class="tag">Grief &amp; Loss Support</span>
+            <span class="tag">Stress Management</span>
+            <span class="tag">Parenting Group</span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.3-6.4L21 8M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.3 6.4L3 16M3 21v-5h5"/></svg></div>
+          <h3>Substance Use &amp; Recovery Counseling</h3>
+          <p>Focused support for recovery, relapse prevention, and the family system around it.</p>
+          <div class="tag-list">
+            <span class="tag">Individual Recovery Counseling</span>
+            <span class="tag">Relapse Prevention</span>
+            <span class="tag">Co-Occurring Disorders</span>
+            <span class="tag">MAT Support</span>
+            <span class="tag">Family Education</span>
+            <span class="tag">Aftercare Planning</span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 0 1 1 1v2H8V3a1 1 0 0 1 1-1z"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><path d="M9 12.5l2 2 4-4.5"/></svg></div>
+          <h3>Specialized Mental Health Evaluations</h3>
+          <p>In-depth assessments that give you and your providers a clear diagnostic picture.</p>
+          <div class="tag-list">
+            <span class="tag">Diagnostic Assessments</span>
+            <span class="tag">Psychological Evaluations</span>
+            <span class="tag">ADHD &amp; Learning Evaluations</span>
+            <span class="tag">Risk Assessments</span>
+            <span class="tag">Court &amp; Legal Evaluations</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="approach">
+    <svg class="band-wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,40 C 240,0 480,70 720,35 C 960,0 1200,60 1440,25 L1440,0 L0,0 Z" fill="var(--bg)"/>
+    </svg>
+    <div class="wrap band-grid">
+      <div>
+        <div class="eyebrow">Our Approach</div>
+        <h2>Healing happens in a relationship you can trust.</h2>
+        <p class="lede">We start by listening. Every plan at Bluebirds is built around your history and your goals &mdash; not a one-size-fits-all program &mdash; and adjusts as you grow. Taking the first step is often the hardest part; we try to make it feel safe.</p>
+      </div>
+      <div class="proof-list">
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-10-9.3C.3 8 2 4.5 5.4 4a4.9 4.9 0 0 1 6.1 2.3A4.9 4.9 0 0 1 17.6 4C21 4.5 22.7 8 22 11.7 19.5 16.4 12 21 12 21z"/></svg>
+          <div><h4>Client-centered plans</h4><p>Treatment is shaped around your story, not a fixed curriculum.</p></div>
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div><h4>Flexible scheduling</h4><p>Individual, couples, family, and group sessions to fit real life.</p></div>
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.5l2 2 4-4.5M12 2l8 3.5v5c0 5-3.4 9-8 11-4.6-2-8-6-8-11v-5z"/></svg>
+          <div><h4>Insurance accepted</h4><p>We accept Medicaid, Medicare, and most major commercial insurance plans.</p></div>
+        </div>
+      </div>
+    </div>
+    <svg class="band-wave-bottom" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,40 C 240,0 480,70 720,35 C 960,0 1200,60 1440,25 L1440,0 L0,0 Z" fill="var(--bg)"/>
+    </svg>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Out in the Community</div>
+          <h2>Moments from our events &amp; outreach.</h2>
+        </div>
+        <p>From community health fairs to support-group workshops, Bluebirds shows up where Woodbridge gathers.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="big"><img src="images/gallery-1.jpg" alt="Bluebirds team member laughing with a community member at an outreach event"></figure>
+        <figure><img src="images/gallery-2.jpg" alt="Bluebirds staff sharing a laugh with a visitor at an outdoor event"></figure>
+        <figure><img src="images/gallery-3.jpg" alt="Bluebirds information table at a community festival"></figure>
+        <figure class="wide"><img src="images/gallery-4.jpg" alt="Handing a wellness brochure to a visitor at an indoor workshop"></figure>
+        <figure><img class="zoom-face" src="images/gallery-5.jpg" alt="Greeting a visitor at the Bluebirds outreach table"></figure>
+        <figure><img src="images/gallery-6.jpg" alt="Conversation at an indoor Bluebirds support workshop"></figure>
+        <figure class="wide"><img src="images/gallery-8.jpg" alt="Bluebirds branded pins and logo card from a community event giveaway"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Our Clinicians</div>
+          <h2>A team of professionals</h2>
+        </div>
+        <p>Meet the people behind Bluebirds &mdash; every session is led by a licensed clinician you can build real trust with.</p>
+      </div>
+      <div class="team-grid">
+        <a class="team-card" href="team.html#leila-kandahari">
+          <div class="team-photo"><img src="images/team-leila.jpg" alt="Leila Kandahari"></div>
+          <h3>Leila Kandahari</h3>
+          <div class="role">Founder &amp; Clinical Director</div>
+          <span class="view-bio">View bio &rarr;</span>
+        </a>
+        <a class="team-card" href="team.html#zhila-qandahari">
+          <div class="team-photo"><img src="images/team-zhila.jpg" alt="Zhila Qandahari"></div>
+          <h3>Zhila Qandahari</h3>
+          <div class="role">Therapist</div>
+          <span class="view-bio">View bio &rarr;</span>
+        </a>
+        <a class="team-card" href="team.html#ammal-mahmood">
+          <div class="team-photo"><img src="images/team-ammal.jpg" alt="Ammal Mahmood"></div>
+          <h3>Ammal Mahmood</h3>
+          <div class="role">Therapist</div>
+          <span class="view-bio">View bio &rarr;</span>
+        </a>
+        <a class="team-card" href="team.html#arsalan-noori">
+          <div class="team-photo"><img src="images/team-arsalan.jpg" alt="Arsalan Noori"></div>
+          <h3>Arsalan Noori</h3>
+          <div class="role">IT &amp; Operations Coordinator</div>
+          <span class="view-bio">View bio &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-wrap">
+        <div class="contact-copy">
+          <div class="eyebrow">Schedule &amp; Heal</div>
+          <h2>Take the first step toward growth.</h2>
+          <p>Reaching out is often the hardest part of the journey &mdash; and the most important. Call, email, or stop by our Woodbridge office to book your first session.</p>
+          <div class="contact-list">
+            <a href="tel:+17032320033">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (703) 232-0033
+            </a>
+            <a href="mailto:admin@bluebirdscounseling.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              admin@bluebirdscounseling.com
+            </a>
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 17h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2"/><path d="M17 9V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v5"/><rect x="7" y="13" width="10" height="8" rx="1"/></svg>
+              Fax: (571) 210-7625
+            </span>
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Woodbridge, Virginia
+            </span>
+          </div>
+        </div>
+        <div class="contact-panel" id="contactPanel">
+          <div class="eyebrow">Ready When You Are</div>
+          <h3>Book your first session</h3>
+          <p>New clients can call or email to find a time that works. We&rsquo;ll match you with the clinician best suited to your goals.</p>
+          <a class="btn btn-primary" href="https://www.therapyportal.com/p/bluebirds1/" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            Request a Session
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <svg class="wave-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C 240,0 480,70 720,35 C 960,0 1200,60 1440,25 L1440,0 L0,0 Z" fill="var(--bg)"/>
+  </svg>
+  <div class="footer-inner wrap footer-row">
+    <a class="brand" href="#top">
+      <img src="images/logo-mark.png" alt="Bluebirds bird mark">
+      <span class="brand-name">Bluebirds Counseling &amp; Recovery Solutions</span>
+    </a>
+    <span class="fine">&copy; 2026 Bluebirds Counseling &amp; Recovery Solutions &middot; Woodbridge, VA</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var wrap = document.getElementById('heroArt');
+    var inner = document.getElementById('heroArtInner');
+    if (!wrap || !inner) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var coarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (reduced || coarse) return;
+
+    var maxTilt = 16;
+    var raf = null;
+
+    function update(clientX, clientY) {
+      var rect = wrap.getBoundingClientRect();
+      var x = (clientX - rect.left) / rect.width;
+      var y = (clientY - rect.top) / rect.height;
+      x = Math.min(1, Math.max(0, x));
+      y = Math.min(1, Math.max(0, y));
+      var rotateY = (x - 0.5) * maxTilt * 2;
+      var rotateX = (0.5 - y) * maxTilt * 2;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        inner.style.transform = 'rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) scale(1.045)';
+        inner.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        inner.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      });
+    }
+
+    function reset() {
+      inner.classList.remove('is-active');
+      if (raf) cancelAnimationFrame(raf);
+      inner.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    }
+
+    wrap.addEventListener('pointerenter', function (e) {
+      inner.classList.add('is-active');
+      update(e.clientX, e.clientY);
+    });
+    wrap.addEventListener('pointermove', function (e) {
+      update(e.clientX, e.clientY);
+    });
+    wrap.addEventListener('pointerleave', reset);
+    wrap.addEventListener('pointercancel', reset);
+  })();
+</script>
+
+<script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var coarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (reduced || coarse) return;
+
+    var panel = document.getElementById('contactPanel');
+    if (!panel) return;
+    var raf = null;
+
+    panel.addEventListener('pointermove', function (e) {
+      var rect = panel.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      x = Math.min(100, Math.max(0, x));
+      y = Math.min(100, Math.max(0, y));
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        panel.style.setProperty('--mx', x.toFixed(1) + '%');
+        panel.style.setProperty('--my', y.toFixed(1) + '%');
+      });
+    });
+    panel.addEventListener('pointerleave', function () {
+      panel.style.setProperty('--mx', '50%');
+      panel.style.setProperty('--my', '50%');
+    });
+  })();
+</script>
+
+</body>
+</html>
